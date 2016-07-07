@@ -1,0 +1,61 @@
+<form name="ListaPezziIncompatibili" role="form">
+
+  <script cam-script type="text/form-script">
+    camForm.on('form-loaded', function() {
+      camForm.variableManager.fetchVariable('jsonOrdine');
+	  camForm.variableManager.fetchVariable('utente');
+	  camForm.variableManager.fetchVariable('idOrdine');
+	  camForm.variableManager.fetchVariable('sconto');
+      camForm.variableManager.fetchVariable('prezzoScontato');
+      camForm.variableManager.fetchVariable('prezzoTotale');
+	});
+
+    camForm.on('variables-fetched', function() {
+      $scope.jsonOrdine = camForm.variableManager.variable('jsonOrdine').value;
+	  $scope.utente = camForm.variableManager.variable('utente').value;
+	  $scope.sconto = camForm.variableManager.variable('sconto').value;
+	  $scope.prezzoScontato = camForm.variableManager.variable('prezzoScontato').value;
+	  $scope.prezzoTotale = camForm.variableManager.variable('prezzoTotale').value;
+    });
+  </script>
+  
+  <p class="lead">Invia preventivo al cliente per l'ordine:</p>
+  <div><font class="control-label">idOrdine: </font>{{idOrdine}}</div>
+  <br>
+  
+  <p class="lead">Ordine intestato all'utente:</p>
+  <address>
+      <strong>{{utente.nome}} {{utente.cognome}}</strong><br>
+      Codice fiscale: {{utente.codFis}}<br>
+      Telefono: {{utente.telefono}}<br>
+      Data nascita: {{utente.dataNascita}}<br>
+      Indirizzo: {{utente.indirizzo.citta}}, {{utente.indirizzo.via}}<br>
+  </address>
+  <br>
+  
+  <p class="lead">Ordine:</p>
+  <table border="1" style="width:100%">
+  	  <thead>
+  	  	<tr>
+  	  		<td class="control-label">Id Pezzo</td>
+  	  		<td class="control-label">Quantità</td>
+  	  	</tr>
+  	  </thead>
+  	  <tbody>
+	 	<tr ng-repeat="pezzo in jsonOrdine.pezzi">
+			<td>{{pezzo.idPezzo}}</td>
+			<td>{{pezzo.qta}}</td>
+  	  	</tr>
+	  </tbody>
+  </table>
+  <br>
+  
+  <p class="lead">Costi:</p>
+  <address>
+  	Prezzo iniziale: {{prezzoTotale}} €<br>
+  	Sconto applicato: {{sconto}}% <br>
+  	<strong>Prezzo finale: {{prezzoScontato}} €</strong>
+  </address>
+  <p class="lead">Inviare una e-mail all'utente.</p>
+  <br>
+</form>

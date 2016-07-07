@@ -1,0 +1,52 @@
+<form name="ListaPezziIncompatibili" role="form">
+
+  <script cam-script type="text/form-script">
+    camForm.on('form-loaded', function() {
+      camForm.variableManager.fetchVariable('pezziIncompatibili');
+	  camForm.variableManager.fetchVariable('utente');
+	  camForm.variableManager.fetchVariable('idOrdine');
+    });
+
+    camForm.on('variables-fetched', function() {
+      $scope.pezziIncompatibili = camForm.variableManager.variable('pezziIncompatibili').value;
+	  $scope.utente = camForm.variableManager.variable('utente').value;
+	  $scope.idOrdine = camForm.variableManager.variable('idOrdine').value;
+    });
+  </script>
+  
+  <p class="lead">Incompatibilità tra i pezzi nell'ordine:</p>
+  <div><font class="control-label">idOrdine: </font>{{idOrdine}}</div>
+  <br>
+  
+  <p class="lead">Ordine intestato all'utente:</p>
+  <address>
+      <strong>{{utente.nome}} {{utente.cognome}}</strong><br>
+      Codice fiscale: {{utente.codFis}}<br>
+      Telefono: {{utente.telefono}}<br>
+      Data nascita: {{utente.dataNascita}}<br>
+      Indirizzo: {{utente.indirizzo.citta}}, {{utente.indirizzo.via}}<br>
+  </address>
+  <br>
+  
+  <p class="lead">Lista di pezzi incompatibili tra loro incompatibili:</p>
+  <table border="1" style="width:100%">
+  	  <thead>
+  	  	<tr>
+  	  		<td class="control-label">Id Pezzo</td>
+  	  		<td class="control-label">Quantità</td>
+  	  		<td class="control-label">Prezzo (€)</td>
+  	  	</tr>
+  	  </thead>
+  	  <tbody>
+	 	<tr ng-repeat="pezzo in pezziIncompatibili.pezzi">
+			<td>{{pezzo.idPezzo}}</td>
+			<td>{{pezzo.qta}}</td>
+			<td>{{pezzo.prezzo}}</td>
+  	  	</tr>
+	  </tbody>
+  </table>
+  <br>
+  
+  <p class="lead">Inviare una e-mail all'utente.</p>
+  <br>
+</form>

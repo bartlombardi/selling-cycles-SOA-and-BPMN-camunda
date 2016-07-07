@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="org.acme.magazzino-principale.wsdl" xmlns:xsd1="org.acme.magazzino-principale.xsd" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="org.acme.magazzino-principale.wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema targetNamespace="org.acme.magazzino-principale.xsd" xmlns:sch="org.acme.magazzino-principale.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema"><xs:element name="eseguiOrdineMagazzini"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:complexType name="Indirizzo"><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="citta" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="via" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="Utente"><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="codFis" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="dataNascita" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="cognome" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="indirizzo" type="sch:Indirizzo"/><xs:element maxOccurs="1" minOccurs="1" name="nome" type="xs:string"/><xs:element maxOccurs="1" minOccurs="1" name="telefono" type="xs:string"/></xs:sequence></xs:complexType><xs:complexType name="Pezzo"><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idPezzo" type="xs:int"/><xs:element maxOccurs="1" minOccurs="0" name="prezzo" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="qta" type="xs:int"/></xs:sequence></xs:complexType><xs:complexType name="PezziMagazzino"><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType><xs:element name="creaIstanzaOrdine"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="utente" type="sch:Utente"/><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezziMagazzino" type="sch:PezziMagazzino"/></xs:sequence></xs:complexType></xs:element><xs:element name="eliminaPrenotazioneMagazzini"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="eseguiOrdineMagazzino"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="eseguiOrdineFornitore"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="prenotaPezziFornitore"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="utente" type="sch:Utente"/><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="prenotaPezziFornitoreResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaDisponibilitaFornitore"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="utente" type="sch:Utente"/><xs:element maxOccurs="1" minOccurs="1" name="idFornitore" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:complexType name="PezzoConPrezzo"><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idPezzo" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="prezzo" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="qta" type="xs:int"/></xs:sequence></xs:complexType><xs:element name="verificaDisponibilitaFornitoreResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:PezzoConPrezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaDisponibilitaMagazzino"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaDisponibilitaMagazzinoResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="prenotaPezziMagazzino"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="utente" type="sch:Utente"/><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="prenotaPezziMagazzinoResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="eliminaPrenotazioneFornitore"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="assemblaCiclo"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/></xs:sequence></xs:complexType></xs:element><xs:element name="verificaDisponibilitaMagazzini"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="utente" type="sch:Utente"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:complexType name="DisponibilitaPezzi"><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idPezzo" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="magazzini"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="0" name="prezzo" type="xs:double"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="qta" type="xs:int"/></xs:sequence></xs:complexType></xs:element></xs:sequence></xs:complexType><xs:element name="verificaDisponibilitaMagazziniResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="pezziMancanti" type="sch:Pezzo"/><xs:element maxOccurs="unbounded" minOccurs="0" name="disponibilitaPezzi" type="sch:DisponibilitaPezzi"/></xs:sequence></xs:complexType></xs:element><xs:element name="prenotaPezziMagazzini"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="utente" type="sch:Utente"/><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="unbounded" minOccurs="0" name="pezziMagazzino" type="sch:PezziMagazzino"/></xs:sequence></xs:complexType></xs:element><xs:element name="prenotaPezziMagazziniResponse"><xs:complexType><xs:sequence><xs:element maxOccurs="unbounded" minOccurs="0" name="pezzi" type="sch:Pezzo"/></xs:sequence></xs:complexType></xs:element><xs:element name="eliminaPrenotazioneMagazzino"><xs:complexType><xs:sequence><xs:element maxOccurs="1" minOccurs="1" name="idOrdine" type="xs:int"/><xs:element maxOccurs="1" minOccurs="1" name="idMagazzino" type="xs:int"/></xs:sequence></xs:complexType></xs:element></xs:schema>
+  </wsdl:types>
+  <wsdl:message name="RichiestaEliminazioneMagazzino">
+    <wsdl:part name="body" element="xsd1:eliminaPrenotazioneMagazzino"/>
+  </wsdl:message>
+  <wsdl:message name="PezziMancanti">
+    <wsdl:part name="body" element="xsd1:prenotaPezziMagazziniResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaAssembla">
+    <wsdl:part name="body" element="xsd1:assemblaCiclo"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaEliminazioneMagazzini">
+    <wsdl:part name="body" element="xsd1:eliminaPrenotazioneMagazzini"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaFornitore">
+    <wsdl:part name="body" element="xsd1:verificaDisponibilitaFornitore"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaCreaOrdine">
+    <wsdl:part name="body" element="xsd1:creaIstanzaOrdine"/>
+  </wsdl:message>
+  <wsdl:message name="RispostaFornitore">
+    <wsdl:part name="body" element="xsd1:verificaDisponibilitaFornitoreResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaPrenotazioneMagazzini">
+    <wsdl:part name="body" element="xsd1:prenotaPezziMagazzini"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaPrenotazioneFornitore">
+    <wsdl:part name="body" element="xsd1:prenotaPezziFornitore"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaPrenotazioneMagazzino">
+    <wsdl:part name="body" element="xsd1:prenotaPezziMagazzino"/>
+  </wsdl:message>
+  <wsdl:message name="RispostaMagazzino">
+    <wsdl:part name="body" element="xsd1:verificaDisponibilitaMagazzinoResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaMagazzino">
+    <wsdl:part name="body" element="xsd1:verificaDisponibilitaMagazzino"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaEsecuzioneFornitore">
+    <wsdl:part name="body" element="xsd1:eseguiOrdineFornitore"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaEsecuzioneMagazzini">
+    <wsdl:part name="body" element="xsd1:eseguiOrdineMagazzini"/>
+  </wsdl:message>
+  <wsdl:message name="RispostaVerificaDisponibilita">
+    <wsdl:part name="body" element="xsd1:verificaDisponibilitaMagazziniResponse"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaEsecuzioneMagazzino">
+    <wsdl:part name="body" element="xsd1:eseguiOrdineMagazzino"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaOrdine">
+    <wsdl:part name="body" element="xsd1:verificaDisponibilitaMagazzini"/>
+  </wsdl:message>
+  <wsdl:message name="RichiestaEliminazioneFornitore">
+    <wsdl:part name="body" element="xsd1:eliminaPrenotazioneFornitore"/>
+  </wsdl:message>
+  <wsdl:portType name="MySelf">
+    <wsdl:operation name="eseguiOrdineMagazzini">
+      <wsdl:input message="tns:RichiestaEsecuzioneMagazzini"/>
+    </wsdl:operation>
+    <wsdl:operation name="creaIstanzaOrdine">
+      <wsdl:input message="tns:RichiestaCreaOrdine"/>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaPrenotazioneMagazzini">
+      <wsdl:input message="tns:RichiestaEliminazioneMagazzini"/>
+    </wsdl:operation>
+    <wsdl:operation name="eseguiOrdineMagazzino">
+      <wsdl:input message="tns:RichiestaEsecuzioneMagazzino"/>
+    </wsdl:operation>
+    <wsdl:operation name="eseguiOrdineFornitore">
+      <wsdl:input message="tns:RichiestaEsecuzioneFornitore"/>
+    </wsdl:operation>
+    <wsdl:operation name="prenotaPezziFornitore">
+      <wsdl:input message="tns:RichiestaPrenotazioneFornitore"/>
+      <wsdl:output message="tns:PezziMancanti"/>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilitaFornitore">
+      <wsdl:input message="tns:RichiestaFornitore"/>
+      <wsdl:output message="tns:RispostaFornitore"/>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilitaMagazzino">
+      <wsdl:input message="tns:RichiestaMagazzino"/>
+      <wsdl:output message="tns:RispostaMagazzino"/>
+    </wsdl:operation>
+    <wsdl:operation name="prenotaPezziMagazzino">
+      <wsdl:input message="tns:RichiestaPrenotazioneMagazzino"/>
+      <wsdl:output message="tns:PezziMancanti"/>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaPrenotazioneFornitore">
+      <wsdl:input message="tns:RichiestaEliminazioneFornitore"/>
+    </wsdl:operation>
+    <wsdl:operation name="assemblaCiclo">
+      <wsdl:input message="tns:RichiestaAssembla"/>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilitaMagazzini">
+      <wsdl:input message="tns:RichiestaOrdine"/>
+      <wsdl:output message="tns:RispostaVerificaDisponibilita"/>
+    </wsdl:operation>
+    <wsdl:operation name="prenotaPezziMagazzini">
+      <wsdl:input message="tns:RichiestaPrenotazioneMagazzini"/>
+      <wsdl:output message="tns:PezziMancanti"/>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaPrenotazioneMagazzino">
+      <wsdl:input message="tns:RichiestaEliminazioneMagazzino"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MySelfSOAPBinding" type="tns:MySelf">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http/"/>
+    <wsdl:operation name="eseguiOrdineMagazzini">
+      <soap:operation soapAction="eseguiOrdineMagazzini" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="creaIstanzaOrdine">
+      <soap:operation soapAction="creaIstanzaOrdine" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaPrenotazioneMagazzini">
+      <soap:operation soapAction="eliminaPrenotazioneMagazzini" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eseguiOrdineMagazzino">
+      <soap:operation soapAction="eseguiOrdineMagazzino" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eseguiOrdineFornitore">
+      <soap:operation soapAction="eseguiOrdineFornitore" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="prenotaPezziFornitore">
+      <soap:operation soapAction="prenotaPezziFornitore" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilitaFornitore">
+      <soap:operation soapAction="verificaDisponibilitaFornitore" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilitaMagazzino">
+      <soap:operation soapAction="verificaDisponibilitaMagazzino" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="prenotaPezziMagazzino">
+      <soap:operation soapAction="prenotaPezziMagazzino" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaPrenotazioneFornitore">
+      <soap:operation soapAction="eliminaPrenotazioneFornitore" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="assemblaCiclo">
+      <soap:operation soapAction="assemblaCiclo" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="verificaDisponibilitaMagazzini">
+      <soap:operation soapAction="verificaDisponibilitaMagazzini" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="prenotaPezziMagazzini">
+      <soap:operation soapAction="prenotaPezziMagazzini" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminaPrenotazioneMagazzino">
+      <soap:operation soapAction="eliminaPrenotazioneMagazzino" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MySelfService">
+    <wsdl:port name="MySelfServicePort" binding="tns:MySelfSOAPBinding">
+      <soap:address location="http://localhost:8000"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
