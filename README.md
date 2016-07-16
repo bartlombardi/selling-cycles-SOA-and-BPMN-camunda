@@ -5,6 +5,7 @@ Service Oriented Software Engineering course. <br>
 
 Jolie SOA which supports the activities of a bicycle selling company + BPMN with Camunda.
 
+##Contributors
 Bartolomeo Lombardi  <br>
 Amerigo Mancino <br>
 Andrea Segalini <br>
