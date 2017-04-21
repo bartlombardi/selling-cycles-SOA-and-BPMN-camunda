@@ -5,13 +5,13 @@ Service Oriented Software Engineering course. <br>
 
 Jolie SOA which supports the activities of a bicycle selling company + BPMN with Camunda.
 
-##Contributors
+## Contributors
 Bartolomeo Lombardi  <br>
 Amerigo Mancino <br>
 Andrea Segalini <br>
 
 
-##Descrizione del dominio e del problema
+## Descrizione del dominio e del problema
 
 L’azienda ACME si occupa di fornire biciclette assemblate su richiesta ed accessori a rivendite che operano direttamente con il pubblico.
 Gli accessori e i componenti che non hanno necessità di assemblaggio o che richiedono operazioni elementari che possono essere effettuate direttamente nelle rivendite (come, ad esempio, il montaggio di un fanale) possono essere oggetto di spedizioni distinte da quello dei cicli.
@@ -27,7 +27,7 @@ In caso di accettazione ACME si pone in attesa che il cliente invii un riferimen
 Una volta verificato con il sistema bancario il pagamento dell’anticipo ACME procede alle spedizioni e si pone in attesa che il cliente notifichi il pagamento del saldo. Una volta controllato con il sistema bancario anche questo trasferimento il processo termina.
 Si progetti e realizzi una SOA che supporti le attività di ACME.
 
-##Vincoli
+## Vincoli
 
 I processi rilevanti di ACME devono essere modellati in BPMN.
 Il sistema deve utilizzare un BPMS (almeno) per la parte di human workflow. Si consiglia di utilizzare Camunda o Activiti.
