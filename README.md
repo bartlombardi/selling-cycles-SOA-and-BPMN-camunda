@@ -6,7 +6,7 @@ Service Oriented Software Engineering course. <br>
 Jolie SOA which supports the activities of a bicycle selling company + BPMN with Camunda.
 
 ## Contributors
-Amerigo Mancino
+Amerigo Mancino <br>
 Andrea Segalini <br>
 
 
@@ -35,5 +35,3 @@ Si assume che il sistema integri sotto forma di servizi (almeno) le seguenti cap
 * Calcolo distanze geografiche (preferibilmente con API Rest)
 * Sistema bancario (preferibilmente API Rest)
 * Fornitore componenti
-
-Tali servizi vanno implementati (con logica elementare) come parte del progetto.
